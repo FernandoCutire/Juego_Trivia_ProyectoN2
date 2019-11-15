@@ -11,7 +11,7 @@
 -Presentación en Pptx
 
 ## Enlaces importantes
--PDF guía del trabajo
+-[PDF guía del trabajo](https://github.com/FernandoC1217/Juego_Trivia_ProyectoN2/tree/master/PDF)
 
 ## Los autores del proyecto
 1. [Fernando Cutire](https://github.com/FernandoC1217)
