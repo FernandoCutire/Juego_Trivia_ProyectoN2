@@ -1,7 +1,7 @@
 public class Juego {
-  public void imprimirHola(){
-    System.out.println("Hola mundo");
-  }
 
+  public void imprimirPuntaje() {
+    System.out.println("                    Puntaje acumulado");
+  }
 
 }
