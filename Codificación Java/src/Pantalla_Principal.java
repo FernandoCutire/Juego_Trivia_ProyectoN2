@@ -8,26 +8,32 @@ public class Pantalla_Principal {
     public String opciones[];
     
     public static void ImprimirPantalla(){
-        System.out.println("1. Configuracion");
-        System.out.println("2. Juegos");
-        System.out.println("3. Consulta de Puntajes Obtenidos");
-        System.out.println("4. Salir");
+        System.out.println("---------------------------------------");
+        System.out.println("           JUEGO DE TRIVIA");
+        System.out.println("1 - Configuracion");
+        System.out.println("2 - Juego");
+        System.out.println("3 - Consulta de Puntajes Obtenidos");
+        System.out.println("4 - Salir");
+        System.out.println("---------------------------------------");
     }
 
     // lee la respuesta del usuario y procede a seleccionarmenu
     public static int LeerRespuesta() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("\nInserte una opción: ");
+        System.out.print("Inserte una opción: ");
         int respuesta = sc.nextInt();
         return respuesta;
     }
 
-    public static void EscogerRespuesta(int respuesta) {
+    public static void EvaluarRespuesta(int respuesta) {
         while(respuesta != 4) {
             switch (respuesta) {
                 case 1:
+                    int puente;    
                     Configuracion config = new Configuracion(); // Crea el objeto de la clase segun la opcion
-                    config.MostrarOpciones();
+                    puente = config.MostrarOpciones();
+                    config.EvaluarOpciones(puente);
+
                     break;
                 case 2:
                     Juego juego = new Juego();
@@ -36,6 +42,9 @@ public class Pantalla_Principal {
                 case 3:
                     Consulta_Puntajes consulta = new Consulta_Puntajes();
                     consulta.imprimirPantalla();
+                    break;
+                default:
+                    System.out.println("\n(!) Seleccione una opción válida");
                     break;
             }
             ImprimirPantalla();
@@ -53,7 +62,10 @@ public class Pantalla_Principal {
         //Llamado a los metodos
         ImprimirPantalla();
         opcionPrincipal =  LeerRespuesta();
-        EscogerRespuesta(opcionPrincipal);
+        EvaluarRespuesta(opcionPrincipal);
 
+
+
+        sc.close();
   }
 }
