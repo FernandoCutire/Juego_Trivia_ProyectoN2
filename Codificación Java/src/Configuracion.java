@@ -13,49 +13,8 @@ public class Configuracion {
         System.out.print("Ingrese su opción: ");
         opcionPrimeraConfiguracion = sc.nextInt();
         return opcionPrimeraConfiguracion;
-
-  }
-    public Configuracion(){
-        enunciado = "";
-        posible1 = "";
-        posible2 = "";
-        posible3 = "";
-        correcta = "";
-        puntos = 0;
     }
 
-    public Configuracion(String enun, String pos1, String pos2, String pos3, String corr, int punt){
-        enunciado = enun;
-        posible1 = pos1;
-        posible2 = pos2;
-        posible3 = pos3;
-        correcta = corr;
-        puntos = punt;
-    }
-    
-    public String getEnunciado(){
-        return enunciado;
-    }
-
-    public String getPosible1(){
-        return posible1;
-    }
-
-    public String getPosible2(){
-        return posible2;
-    }
-
-    public String getPosible3(){
-        return posible3;
-    }
-
-    public String getCorrecta(){
-        return correcta;
-    }
-
-    public int getPuntos(){
-        return puntos;
-    }
     public Object[] EvaluarOpciones(int opcionPrimeraConfiguracion) {
         int posib, espacio;
         Configuracion preg[] = new Configuracion[15];
@@ -63,7 +22,7 @@ public class Configuracion {
         int punt;
         Scanner sc = new Scanner(System.in);
         posib = opcionPrimeraConfiguracion;
-        while(posib != 4){
+        while(posib != 4) {
             switch(posib) {
                 case 1:
                     System.out.print("\nIngrese el numero de la pregunta: ");
@@ -105,4 +64,47 @@ public class Configuracion {
         }
         return preg;
     }
+
+    public Configuracion(){
+        enunciado = "";
+        posible1 = "";
+        posible2 = "";
+        posible3 = "";
+        correcta = "";
+        puntos = 0;
+    }
+
+    public Configuracion(String enun, String pos1, String pos2, String pos3, String corr, int punt){
+        enunciado = enun;
+        posible1 = pos1;
+        posible2 = pos2;
+        posible3 = pos3;
+        correcta = corr;
+        puntos = punt;
+    }
+    
+    public String getEnunciado(){
+        return enunciado;
+    }
+
+    public String getPosible1(){
+        return posible1;
+    }
+
+    public String getPosible2(){
+        return posible2;
+    }
+
+    public String getPosible3(){
+        return posible3;
+    }
+
+    public String getCorrecta(){
+        return correcta;
+    }
+
+    public int getPuntos(){
+        return puntos;
+    }
+
 }
