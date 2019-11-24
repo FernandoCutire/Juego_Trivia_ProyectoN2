@@ -1,13 +1,14 @@
 import java.util.Scanner;
+
 public class Pantalla_Principal {
-  // Declaracion de variables
+    // Declaracion de variables
     public String usuarios[];
     public int puntaje[];
-    public String pregunta[];
+    public static Object preguntas[] = new Object[15];
     public String respuesta[];
     public String opciones[];
-    
-    public static void ImprimirPantalla(){
+
+    public static void ImprimirPantalla() {
         System.out.println("---------------------------------------");
         System.out.println("           JUEGO DE TRIVIA");
         System.out.println("1 - Configuracion");
@@ -25,47 +26,50 @@ public class Pantalla_Principal {
         return respuesta;
     }
 
-    public static void EvaluarRespuesta(int respuesta) {
-        while(respuesta != 4) {
-            switch (respuesta) {
-                case 1:
-                    int puente;    
-                    Configuracion config = new Configuracion(); // Crea el objeto de la clase segun la opcion
-                    puente = config.MostrarOpciones();
-                    config.EvaluarOpciones(puente);
+    public String getEnunciado() {
+        return enunciado;
+    }
 
-                    break;
-                case 2:
-                    Juego juego = new Juego();
-                    juego.imprimirHola();
-                    break;
-                case 3:
-                    Consulta_Puntajes consulta = new Consulta_Puntajes();
-                    consulta.imprimirPantalla();
-                    break;
-                default:
-                    System.out.println("\n(!) Seleccione una opción válida");
-                    break;
+    // Ctrl + Shift + I
+    public static void EvaluarRespuesta(int respuesta) {
+        //String ask;
+        while (respuesta != 4) {
+            switch (respuesta) {
+            case 1:
+                int puente;
+                Configuracion config = new Configuracion(); // Crea el objeto de la clase segun la opcion
+                puente = config.MostrarOpciones();
+                preguntas = config.EvaluarOpciones(puente);
+                //ask = preguntas[1].getEnunciado;
+                break;
+            case 2:
+                Juego juego = new Juego();
+                juego.imprimirHola();
+                break;
+            case 3:
+                Consulta_Puntajes consulta = new Consulta_Puntajes();
+                consulta.imprimirPantalla();
+                break;
+            default:
+                System.out.println("\n(!) Seleccione una opción válida");
+                break;
             }
             ImprimirPantalla();
             respuesta = LeerRespuesta();
         }
         System.out.println("Hasta luego, gracias por jugar");
-    
+
     }
 
-
     public static void main(String[] args) {
-        //Declaracion de variables
+        // Declaracion de variables
         Scanner sc = new Scanner(System.in);
         int opcionPrincipal;
-        //Llamado a los metodos
+        // Llamado a los metodos
         ImprimirPantalla();
-        opcionPrincipal =  LeerRespuesta();
+        opcionPrincipal = LeerRespuesta();
         EvaluarRespuesta(opcionPrincipal);
 
-
-
         sc.close();
-  }
+    }
 }
