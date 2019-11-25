@@ -1,69 +1,69 @@
-
 import java.util.ArrayList; // The ArrayList library
-import java.util.Iterator; // The Iterator Library
-import java.util.Arrays; // The Arrays Library
-import java.util.Scanner;
-
+import java.util.Scanner; // La libreria del Scanner
 public class Pantalla_Principal {
+  // Declaracion de variables
+  public static Object preguntass[] = new Object[15];
+
 
   // Declaracion de arreglos
-  ArrayList<String> nombre_usuarios = new ArrayList<String>();
-  ArrayList<int> puntaje = new ArrayList<int>();
-  ArrayList<String> respuesta = new ArrayList<String>();
-  ArrayList<String> pregunta = new ArrayList<String>();
-  ArrayList<String> opciones = new ArrayList<String>();
+  public ArrayList<String> preguntas = new ArrayList<String>();
+  public ArrayList<String> mensajes = new ArrayList<String>();
+  public ArrayList<Integer> puntajeresp = new ArrayList<Integer>();
 
-
-  public static void imprimirPantalla() {
-    System.out.println("Bienvenido a nuestro juego trivia");
-    System.out.println("Inserte su nombre: ");
+  // Imprime la pantalla principal
+  public static void ImprimirPantalla(){
     System.out.println("1. Configuracion");
     System.out.println("2. Juegos");
     System.out.println("3. Consulta de Puntajes Obtenidos");
     System.out.println("4. Salir");
-    leerRespuesta();
   }
 
   // lee la respuesta del usuario y procede a seleccionarmenu
-  public static void leerRespuesta() {
+  public static int LeerRespuesta() {
     Scanner sc = new Scanner(System.in);
-    System.out.println("Inserte una opción: ");
+    System.out.println("\nInserte una opción: ");
     int respuesta = sc.nextInt();
-    seleccionarMenu(respuesta);
+    return respuesta;
   }
 
-
-  // Es la funcion principal que permite escoger al usuario la opcion
-  public static void seleccionarMenu(int respuesta) {
-    while (respuesta != 4) {
+  public static void EscogerRespuesta(int respuesta) {
+    // Bucle que permite iterar en la pantalla principal
+    while(respuesta != 4) {
       switch (respuesta) {
         case 1:
+          int puente;
           Configuracion config = new Configuracion(); // Crea el objeto de la clase segun la opcion
-          config.imprimirPantalla();
-          imprimirPantalla();
+          puente = config.MostrarOpciones();
+          preguntass = config.EvaluarOpciones(puente);
+          //ask = preguntas[1].getEnunciado;
           break;
         case 2:
           Juego juego = new Juego();
-          juego.imprimirPuntaje();
-          imprimirPantalla();
+          juego.ImprimirPantalla();
           break;
         case 3:
           Consulta_Puntajes consulta = new Consulta_Puntajes();
           consulta.imprimirPantalla();
-          imprimirPantalla();
           break;
         default:
-          System.out.println("Ha ingresado una opcion no establecida.");
-          imprimirPantalla();
-          break;
+          System.out.println("\n(!) Seleccione una opción válida");
       }
+      ImprimirPantalla();
+      respuesta = LeerRespuesta();
     }
-    System.out.println("¡Hasta luego!");
+    System.out.println("Hasta luego, gracias por jugar");
+
   }
 
-  public static void main(String[] args) {
-    imprimirPantalla();
 
+  public static void main(String[] args) {
+    //Declaracion de variables
+    Scanner sc = new Scanner(System.in);
+    int opcionPrincipal;
+    //Llamado a los metodos
+    ImprimirPantalla();
+    opcionPrincipal =  LeerRespuesta();
+    EscogerRespuesta(opcionPrincipal);
 
   }
 }
